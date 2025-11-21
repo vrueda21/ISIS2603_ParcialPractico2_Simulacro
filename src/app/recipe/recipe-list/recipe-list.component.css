@@ -10,3 +10,9 @@ tr:hover {
 thead {
   background-color: palevioletred;
 }
+
+.recipes-page {
+  min-height: 100vh;
+  background-color: #ffc4d6;
+  padding: 2rem;
+}

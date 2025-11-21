@@ -1,35 +1,47 @@
-<div>
-  <div>
-    @if (selected) {
-    <div *ngIf="selected">
-      <app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail>
+@if (selected) {
+  <app-recipe-detail [recipe]="selected"></app-recipe-detail>
+  }
+
+<div class="recipes-page">
+  <h1 class="text-center mb-4">Recetas uniandes</h1>
+<div class="container-fluid">
+  <div class="row g-2">
+    <div class="col-md-3 mb-3" *ngFor="let recipe of recipes">
+      <div class="card h-100 shadow-sm" style="width: 15rem;">
+        <img
+        class="card-img-top"
+        src="{{ recipe.imagen }}"
+        alt="{{ recipe.nombre }}"
+        (click)="onSelect(recipe)"
+      />
+        <div class="card-body">
+          <h5 class="card-title">{{ recipe.nombre }}</h5>
+          <ul class="card-text" *ngIf="recipe.etiquetas">
+            <li *ngFor="let tag of recipe.etiquetas">
+              {{ tag }}
+            </li>
+          </ul>
+          <p class="card-text">Porciones: {{ recipe.porciones }}</p>
+
+          <div class="mt-2">
+            <p class="mb-1"><strong># Ingredientes:</strong> {{ recipe.ingredientes.length }}</p>
+
+            <div class="ingredient-bar-container">
+              <div
+                class="ingredient-bar"
+                [style.width.%]="recipe.ingredientes.length * 10" ></div>
+              </div>
+            </div>
+          </div>
+
+          <a
+          [routerLink]="['/recipes', recipe.id]"
+          class="btn btn-primary"
+          >
+          Ver la Receta
+        </a>
+        </div>
+      </div>
     </div>
-    }
-    <table>
-      <thead>
-        <tr>
-          <th>Receta</th>
-          <th>Imagen</th>
-          <th>Porciones</th>
-          <th>Tiempo</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for(recipe of recipes; track recipe.id){
-        <tr (click)="onSelect(recipe)">
-          <td>{{ recipe.nombre }}</td>
-          <td>
-            <img
-              class="recipe-img"
-              [src]="recipe.imagen"
-              alt="{{ recipe.imagen }}"
-            />
-          </td>
-          <td>{{ recipe.porciones }}</td>
-          <td>{{ recipe.tiempo_minutos }} min</td>
-        </tr>
-        }
-      </tbody>
-    </table>
   </div>
 </div>

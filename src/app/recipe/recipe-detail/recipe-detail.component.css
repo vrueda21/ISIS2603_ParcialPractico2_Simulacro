@@ -1,3 +1,39 @@
-img.recipe-detail-img {
-  max-width: 500px;
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #ffc4d6;
+  padding: 2rem 0;
+}
+
+
+h1 {
+  font-weight: 700;
+}
+
+
+.detail-card {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+.detail-image {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+
+h2 {
+  font-weight: 600;
+}
+
+h4 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
